@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Nathan Atchison" />
+
+
+<title>Project 2: Stat302Project2 Tutorial</title>
+
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic tbody tr:last-child td {
+border-bottom: 0.14em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Project 2: Stat302Project2 Tutorial</h1>
+<h4 class="author">Nathan Atchison</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(randomForest)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; randomForest 4.6-14</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt; Type rfNews() to see new features/changes/bug fixes.</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Attaching package: &#39;ggplot2&#39;</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt; The following object is masked from &#39;package:randomForest&#39;:</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt;     margin</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">my_penguins &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Data/my_penguins.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">source</span>(<span class="st">&quot;D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Code/my_rf_cv.R&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">tut_rf_mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">30</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">tut_rf_fin_tab &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>) </a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb3-5" title="5">    curr_k &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb3-7" title="7">    curr_k &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb3-8" title="8">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb3-9" title="9">    curr_k &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb3-10" title="10">  }</a>
+<a class="sourceLine" id="cb3-11" title="11">  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">30</span>) {</a>
+<a class="sourceLine" id="cb3-12" title="12">    tut_my_rf &lt;-<span class="st"> </span><span class="kw">my_rf_cv</span>(<span class="dt">k =</span> curr_k)</a>
+<a class="sourceLine" id="cb3-13" title="13">    tut_rf_mat[j,i] &lt;-<span class="st"> </span>tut_my_rf</a>
+<a class="sourceLine" id="cb3-14" title="14">  }</a>
+<a class="sourceLine" id="cb3-15" title="15">  tut_rf_fin_tab[i,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">mean</span>(tut_rf_mat[,i])</a>
+<a class="sourceLine" id="cb3-16" title="16">  tut_rf_fin_tab[i,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">sd</span>(tut_rf_mat[,i])</a>
+<a class="sourceLine" id="cb3-17" title="17">}</a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="kw">colnames</span>(tut_rf_fin_tab) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>)</a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="kw">rownames</span>(tut_rf_fin_tab) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;k2&quot;</span>, <span class="st">&quot;k5&quot;</span>, <span class="st">&quot;k10&quot;</span>)</a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="kw">colnames</span>(tut_rf_mat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;k2CVerr&quot;</span>, <span class="st">&quot;k5CVerr&quot;</span>, <span class="st">&quot;k10CVerr&quot;</span>)</a>
+<a class="sourceLine" id="cb3-21" title="21"></a>
+<a class="sourceLine" id="cb3-22" title="22">tut_rf_dataframe &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(tut_rf_mat)</a>
+<a class="sourceLine" id="cb3-23" title="23"></a>
+<a class="sourceLine" id="cb3-24" title="24">tut_box1 &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">ggplot</span>(<span class="dt">data =</span> tut_rf_dataframe, ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">y =</span> k2CVerr)) <span class="op">+</span><span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb3-25" title="25">tut_box2 &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">ggplot</span>(<span class="dt">data =</span> tut_rf_dataframe, ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">y =</span> k5CVerr)) <span class="op">+</span><span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb3-26" title="26">tut_box3 &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">ggplot</span>(<span class="dt">data =</span> tut_rf_dataframe, ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">y =</span> k10CVerr)) <span class="op">+</span><span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;green&quot;</span>)</a>
+<a class="sourceLine" id="cb3-27" title="27">ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(tut_box1,tut_box2,tut_box3, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;k=2&quot;</span>, <span class="st">&quot;k=5&quot;</span>, <span class="st">&quot;k=10&quot;</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(knitr<span class="op">::</span><span class="kw">kable</span>(tut_rf_fin_tab))</a></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+k2
+</td>
+<td style="text-align:right;">
+127109.8
+</td>
+<td style="text-align:right;">
+7291.672
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+k5
+</td>
+<td style="text-align:right;">
+120216.3
+</td>
+<td style="text-align:right;">
+3498.926
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+k10
+</td>
+<td style="text-align:right;">
+118811.6
+</td>
+<td style="text-align:right;">
+1864.041
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;Proj2Boxplot.png&quot;</span>, <span class="dt">path =</span> <span class="st">&quot;D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Figures&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt; Saving 3 x 3 in image</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">saveRDS</span>(<span class="dt">object =</span> tut_rf_fin_tab, <span class="dt">file =</span> <span class="st">&quot;D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Results/SummStatsTab.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="kw">write.csv</span>(<span class="dt">x =</span> tut_rf_mat, <span class="dt">file =</span> <span class="st">&quot;D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Results/SimResults.csv&quot;</span>)</a></code></pre></div>
+<p>In the boxplots above, it seems that as the value of k increases, the range of the boxplots decreases. For example, when k = 2, we see that it has larger range from it’s minimum to it’s maximum when compared to k = 5 and k = 10. We also see that the range difference between k = 5 and k = 10 is smaller than the difference between k = 2 and k = 10, however, we still observe that the range is smaller for k = 10. In the table we see that when k = 2, it has a fairly larger mean and standard deviation when it comes to k = 5 and k = 10. We also see that k = 5 and k = 10 are fairly similar in their means. However, we see that the standard deviation when k = 10 is smaller when compared to when k = 5. I think that these results are the case because as the value of k increases, we are adding more folds to the data as a whole. This means that we are taking more tests within our function. As a result of taking more tests, our results will be more accurate and as a result, our standard deviations will decrease giving us the results we received above.</p>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

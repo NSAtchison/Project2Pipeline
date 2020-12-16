@@ -1,0 +1,67 @@
+---
+title: "Project 2: Stat302Project2 Tutorial"
+author: "Nathan Atchison"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Stat302Project2 Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(magrittr)
+library(randomForest)
+library(ggplot2)
+```
+
+
+```{r}
+my_penguins <- read.csv("D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Data/my_penguins.csv")
+source("D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Code/my_rf_cv.R")
+```
+
+```{r}
+tut_rf_mat <- matrix(data = NA, nrow = 30, ncol = 3)
+tut_rf_fin_tab <- matrix(data = NA, nrow = 3, ncol = 2) 
+for(i in 1:3) {
+  if(i == 1) {
+    curr_k <- 2
+  } else if (i == 2) {
+    curr_k <- 5
+  } else {
+    curr_k <- 10
+  }
+  for(j in 1:30) {
+    tut_my_rf <- my_rf_cv(k = curr_k)
+    tut_rf_mat[j,i] <- tut_my_rf
+  }
+  tut_rf_fin_tab[i,1] <- mean(tut_rf_mat[,i])
+  tut_rf_fin_tab[i,2] <- sd(tut_rf_mat[,i])
+}
+colnames(tut_rf_fin_tab) <- c("mean", "sd")
+rownames(tut_rf_fin_tab) <- c("k2", "k5", "k10")
+colnames(tut_rf_mat) <- c("k2CVerr", "k5CVerr", "k10CVerr")
+
+tut_rf_dataframe <- as.data.frame(tut_rf_mat)
+
+tut_box1 <- ggplot2::ggplot(data = tut_rf_dataframe, ggplot2::aes(y = k2CVerr)) + ggplot2::geom_boxplot(fill = "blue")
+tut_box2 <- ggplot2::ggplot(data = tut_rf_dataframe, ggplot2::aes(y = k5CVerr)) + ggplot2::geom_boxplot(fill = "red")
+tut_box3 <- ggplot2::ggplot(data = tut_rf_dataframe, ggplot2::aes(y = k10CVerr)) + ggplot2::geom_boxplot(fill = "green")
+ggpubr::ggarrange(tut_box1,tut_box2,tut_box3, labels = c("k=2", "k=5", "k=10"), ncol = 2, nrow = 2)
+kableExtra::kable_styling(knitr::kable(tut_rf_fin_tab))
+```
+
+```{r}
+ggsave(filename = "Proj2Boxplot.png", path = "D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Figures")
+saveRDS(object = tut_rf_fin_tab, file = "D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Results/SummStatsTab.rds")
+write.csv(x = tut_rf_mat, file = "D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Results/SimResults.csv")
+```
+
+In the boxplots above, it seems that as the value of k increases, the range of the boxplots decreases. For example, when k = 2, we see that it has larger range from it's minimum to it's maximum when compared to k = 5 and k = 10. We also see that the range difference between k = 5 and k = 10 is smaller than the difference between k = 2 and k = 10, however, we still observe that the range is smaller for k = 10.  In the table we see that when k = 2, it has a fairly larger mean and standard deviation when it comes to k = 5 and k = 10. We also see that k = 5 and k = 10 are fairly similar in their means. However, we see that the standard deviation when k = 10 is smaller when compared to when k = 5. I think that these results are the case because as the value of k increases, we are adding more folds to the data as a whole. This means that we are taking more tests within our function. As a result of taking more tests, our results will be more accurate and as a result, our standard deviations will decrease giving us the results we received above. 
