@@ -64,4 +64,17 @@ saveRDS(object = tut_rf_fin_tab, file = "D:/Desktop/Stat302Stuff/Projects/Projec
 write.csv(x = tut_rf_mat, file = "D:/Desktop/Stat302Stuff/Projects/Project2Pipeline/Output/Results/SimResults.csv")
 ```
 
-In the boxplots above, it seems that as the value of k increases, the range of the boxplots decreases. For example, when k = 2, we see that it has larger range from it's minimum to it's maximum when compared to k = 5 and k = 10. We also see that the range difference between k = 5 and k = 10 is smaller than the difference between k = 2 and k = 10, however, we still observe that the range is smaller for k = 10.  In the table we see that when k = 2, it has a fairly larger mean and standard deviation when it comes to k = 5 and k = 10. We also see that k = 5 and k = 10 are fairly similar in their means. However, we see that the standard deviation when k = 10 is smaller when compared to when k = 5. I think that these results are the case because as the value of k increases, we are adding more folds to the data as a whole. This means that we are taking more tests within our function. As a result of taking more tests, our results will be more accurate and as a result, our standard deviations will decrease giving us the results we received above. 
+In the boxplots above, it seems that as the value of k increases, the range of 
+the boxplots decreases. For example, when k = 2, we see that it has larger range 
+from it's minimum to it's maximum when compared to k = 5 and k = 10. We also see 
+that the range difference between k = 5 and k = 10 is smaller than the difference 
+between k = 2 and k = 10, however, we still observe that the range is smaller 
+for k = 10.  In the table we see that when k = 2, it has a fairly larger mean 
+and standard deviation when it comes to k = 5 and k = 10. We also see that k = 5 
+and k = 10 are fairly similar in their means. However, we see that the standard 
+deviation when k = 10 is smaller when compared to when k = 5. I think that these 
+results are the case because as the value of k increases, we are adding more 
+folds to the data as a whole. This means that we are taking more tests within 
+our function. As a result of taking more tests, our results will be more 
+accurate and as a result, our standard deviations will decrease giving us the 
+results we received above. 
